@@ -145,7 +145,7 @@ app.layout = html.Div(children=[
                 Output(component_id='plot5', component_property='children')] ,
                [Input(component_id='input-type', component_property='value'),
                 Input(component_id='input-year', component_property='value')],
-               # REVIEW4: Holding output state till user enters all the form information. In this case, it will be chart type and year
+               #REVIEW4: Holding output state till user enters all the form information. In this case, it will be chart type and year
                [State("plot1", 'children'), State("plot2", "children"),
                 State("plot3", "children"), State("plot4", "children"),
                 State("plot5", "children")
