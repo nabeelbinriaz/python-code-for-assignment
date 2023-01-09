@@ -1,7 +1,7 @@
-# python-code-for-assignment
+python-code-for-assignment
 python course for assignment to be checked by staff for help
 
-# Import required libraries
+Import required libraries
 import pandas as pd
 import dash
 import dash_html_components as html
@@ -12,20 +12,20 @@ import plotly.express as px
 from dash import no_update
 
 
-# Create a dash application
+ Create a dash application
 app = dash.Dash(__name__)
 
-# REVIEW1: Clear the layout and do not display exception till callback gets executed
+ REVIEW1: Clear the layout and do not display exception till callback gets executed
 app.config.suppress_callback_exceptions = True
 
-# Read the airline data into pandas dataframe
+ Read the airline data into pandas dataframe
 airline_data =  pd.read_csv('https://cf-courses-data.s3.us.cloud-object-storage.appdomain.cloud/IBMDeveloperSkillsNetwork-DV0101EN-SkillsNetwork/Data%20Files/airline_data.csv', 
                             encoding = "ISO-8859-1",
                             dtype={'Div1Airport': str, 'Div1TailNum': str, 
                                    'Div2Airport': str, 'Div2TailNum': str})
 
 
-# List of years 
+ List of years 
 year_list = [i for i in range(2005, 2021, 1)]
 
 """Compute graph data for creating yearly airline performance report 
@@ -73,7 +73,7 @@ def compute_data_choice_2(df):
     return avg_car, avg_weather, avg_NAS, avg_sec, avg_late
 
 
-# Application layout
+Application layout
 app.layout = html.Div(children=[ 
                                 # TASK1: Add title to the dashboard
                                 # Enter your code below. Make sure you have correct formatting.
@@ -135,9 +135,9 @@ app.layout = html.Div(children=[
                                 ], style={'display': 'flex'}),
                                 ])
 
-# Callback function definition
-# TASK4: Add 5 ouput components
-# Enter your code below. Make sure you have correct formatting.
+ Callback function definition
+ TASK4: Add 5 ouput components
+ Enter your code below. Make sure you have correct formatting.
 @app.callback([Output(component_id='plot1', component_property='children'),
                 Output(component_id='plot2', component_property='children'),
                 Output(component_id='plot2', component_property='children'),
@@ -150,7 +150,7 @@ app.layout = html.Div(children=[
                 State("plot3", "children"), State("plot4", "children"),
                 State("plot5", "children")
                ])
-# Add computation to callback function and return graph
+ Add computation to callback function and return graph
 def get_graph(chart, year, children1, children2, c3, c4, c5):
       
         # Select data
@@ -218,6 +218,6 @@ def get_graph(chart, year, children1, children2, c3, c4, c5):
                    dcc.Graph(figure=late_fig)]
 
 
-# Run the app
+Run the app
 if __name__ == '__main__':
     app.run_server()
